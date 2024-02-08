@@ -27,7 +27,7 @@ const BlogPage = () => {
 
     useEffect(() => {
         fetchData()
-    }, [currentPage, pageSize, selectedCategory])
+    }, [currentPage, pageSize, selectedCategory, fetchData])
 
     //Page changing btn
     const handlePageChange = (pageSize) => {
