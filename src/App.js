@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+
+import { Outlet } from 'react-router-dom';
 import './App.css';
+import Header from "./components/Header/Header"
+import Footer from "./components/Footer/Footer"
+import { ThemeProvider } from './context/ThemeContext';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [themeMode, setThemeMode] = useState("light")
+
+  const darkTheme = () => {
+    setThemeMode("dark")
+  }
+
+  const lightTheme = () => {
+    setThemeMode("light")
+  }
+
+  useEffect(() => {
+    document.querySelector("html").classList.remove("dark", "light")
+    document.querySelector("html").classList.add(themeMode)
+  }, [themeMode])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider value={{themeMode, darkTheme, lightTheme}}>
+          <Header />
+          <Outlet />
+          <Footer />
+    </ThemeProvider>
   );
 }
 
