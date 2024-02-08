@@ -8,7 +8,7 @@ const BlogDetails = () => {
 
     const data = useLoaderData()
     // console.log(data)
-    const {title, image, category, author, published_date, reading_time, content} = data
+    const {title, image, author, published_date, reading_time, content} = data
   return (
     <div className=''>
       <div className='py-40 text-center text-black px-4'>
